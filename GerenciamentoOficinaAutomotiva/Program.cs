@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GerenciamentoOficinaAutomotiva.Context;
+using GerenciamentoOficinaAutomotiva.InfraStructure;
+using GerenciamentoOficinaAutomotiva.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +17,15 @@ namespace GerenciamentoOficinaAutomotiva
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmPrincipalBusca());
+
+            var context = new OficinaContext();
+
+            IClienteRepository clienteRepository = new ClienteRepository(context);
+
+            Application.Run(new FrmPrincipalBusca(clienteRepository));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace GerenciamentoOficinaAutomotiva.Model
 {
 
    
-    internal class Veiculo
+    public class Veiculo
     {
         public int Id { get; set; }
 

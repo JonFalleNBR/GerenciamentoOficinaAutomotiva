@@ -54,5 +54,12 @@ namespace GerenciamentoOficinaAutomotiva.InfraStructure
            _context.Clientes.Update(cliente);
             await _context.SaveChangesAsync();
         }
+
+
+        public async Task<Cliente> GetClienteByNameAsync(string nome)
+        {
+            return await _context.Clientes.FirstOrDefaultAsync(c => c.Nome
+                                                                       == nome);
+        }
     }
 }

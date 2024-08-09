@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GerenciamentoOficinaAutomotiva.Repository
 {
-    internal interface IClienteRepository
+    public interface IClienteRepository
     {
 
         Task<IEnumerable<Cliente>> GetAllClientesAsync();
@@ -16,5 +16,6 @@ namespace GerenciamentoOficinaAutomotiva.Repository
         Task UpdateClienteAsync(Cliente cliente);
         Task DeleteClienteByIdAsync(int id);
 
+        Task <Cliente>GetClienteByNameAsync(string nome);
     }
 }
