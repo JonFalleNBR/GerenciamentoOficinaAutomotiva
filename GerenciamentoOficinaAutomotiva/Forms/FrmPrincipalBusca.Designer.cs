@@ -12,8 +12,9 @@ namespace GerenciamentoOficinaAutomotiva
         private System.Windows.Forms.Label lblCpf;
         private System.Windows.Forms.Label lblEndereco;
         private System.Windows.Forms.Label lblTelefone;
+        private System.Windows.Forms.Label lblVeiculo;
 
-        
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -44,14 +45,15 @@ namespace GerenciamentoOficinaAutomotiva
             this.lblCpf = new System.Windows.Forms.Label();
             this.lblEndereco = new System.Windows.Forms.Label();
             this.lblTelefone = new System.Windows.Forms.Label();
-
+            this.lblVeiculo = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(368, 31);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(589, 73);
             this.button1.TabIndex = 0;
@@ -62,7 +64,7 @@ namespace GerenciamentoOficinaAutomotiva
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(24, 55);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(317, 22);
             this.textBox1.TabIndex = 1;
@@ -74,7 +76,7 @@ namespace GerenciamentoOficinaAutomotiva
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(16, 39);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1035, 150);
             this.panel1.TabIndex = 2;
@@ -88,55 +90,65 @@ namespace GerenciamentoOficinaAutomotiva
             this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Nome do Cliente";
-
-// Modificações no Panel e adição dos Labels com as informações
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblVeiculo);
             this.panel2.Controls.Add(this.lblNome);
             this.panel2.Controls.Add(this.lblCpf);
             this.panel2.Controls.Add(this.lblEndereco);
             this.panel2.Controls.Add(this.lblTelefone);
             this.panel2.Location = new System.Drawing.Point(16, 197);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1035, 348);
             this.panel2.TabIndex = 3;
-
+            // 
             // lblNome
+            // 
             this.lblNome.AutoSize = true;
             this.lblNome.Location = new System.Drawing.Point(20, 20);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(45, 16);
+            this.lblNome.Size = new System.Drawing.Size(47, 16);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "Nome:";
-
+            // 
             // lblCpf
+            // 
             this.lblCpf.AutoSize = true;
             this.lblCpf.Location = new System.Drawing.Point(20, 60);
             this.lblCpf.Name = "lblCpf";
-            this.lblCpf.Size = new System.Drawing.Size(34, 16);
+            this.lblCpf.Size = new System.Drawing.Size(36, 16);
             this.lblCpf.TabIndex = 1;
             this.lblCpf.Text = "CPF:";
-
+            // 
             // lblEndereco
+            // 
             this.lblEndereco.AutoSize = true;
             this.lblEndereco.Location = new System.Drawing.Point(20, 100);
             this.lblEndereco.Name = "lblEndereco";
-            this.lblEndereco.Size = new System.Drawing.Size(67, 16);
+            this.lblEndereco.Size = new System.Drawing.Size(69, 16);
             this.lblEndereco.TabIndex = 2;
             this.lblEndereco.Text = "Endereço:";
-
+            // 
             // lblTelefone
+            // 
             this.lblTelefone.AutoSize = true;
             this.lblTelefone.Location = new System.Drawing.Point(20, 140);
             this.lblTelefone.Name = "lblTelefone";
-            this.lblTelefone.Size = new System.Drawing.Size(66, 16);
+            this.lblTelefone.Size = new System.Drawing.Size(64, 16);
             this.lblTelefone.TabIndex = 3;
             this.lblTelefone.Text = "Telefone:";
-
-
-
+            this.lblTelefone.Click += new System.EventHandler(this.lblTelefone_Click);
+            // 
+            // lblVeiculo
+            // 
+            this.lblVeiculo.AutoSize = true;
+            this.lblVeiculo.Location = new System.Drawing.Point(20, 178);
+            this.lblVeiculo.Name = "lblVeiculo";
+            this.lblVeiculo.Size = new System.Drawing.Size(55, 16);
+            this.lblVeiculo.TabIndex = 4;
+            this.lblVeiculo.Text = "Veiculo:";
             // 
             // FrmPrincipalBusca
             // 
@@ -145,11 +157,13 @@ namespace GerenciamentoOficinaAutomotiva
             this.ClientSize = new System.Drawing.Size(1071, 560);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmPrincipalBusca";
             this.Text = "Empresa | Consulta";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }

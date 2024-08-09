@@ -1,4 +1,5 @@
-﻿using GerenciamentoOficinaAutomotiva.Model;
+﻿using GerenciamentoOficinaAutomotiva.Context;
+using GerenciamentoOficinaAutomotiva.Model;
 using GerenciamentoOficinaAutomotiva.Repository;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace GerenciamentoOficinaAutomotiva
     {
 
         private readonly IClienteRepository _clienteRepository;
-
+        private readonly OficinaContext _context;
 
         public FrmPrincipalBusca(IClienteRepository clienteRepository)
         {
@@ -29,6 +30,38 @@ namespace GerenciamentoOficinaAutomotiva
         {
 
             string nomeCliente = textBox1.Text.Trim();
+            var cliente = _context.Clientes.Where(c => c.Nome.Contains(nomeCliente))
+                                                                   .SingleOrDefault();
+
+
+            if (cliente != null)
+            {
+                lblNome.Text = $"Nome: {cliente.Nome}";
+                lblCpf.Text = $"CPF: {cliente.Cpf}";
+                lblEndereco.Text = $"Endereço: {cliente.Endereco}";
+                lblTelefone.Text = $"Telefone: {cliente.Telefone}";
+
+                // Buscar o veículo associado ao cliente
+                var veiculo = _context.Veiculos
+                    .Where(v => v.ClientId == cliente.Id)
+                    .SingleOrDefault();
+
+                if (veiculo != null)
+                {
+                    lblVeiculo.Text = $"Veículo: {veiculo.Marca} {veiculo.Modelo} ({veiculo.Cor}, {veiculo.Placa})";
+                }
+                else
+                {
+                    lblVeiculo.Text = "Veículo: Não cadastrado";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Cliente não encontrado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
             if (string.IsNullOrEmpty(nomeCliente))
             {
 
@@ -52,11 +85,11 @@ namespace GerenciamentoOficinaAutomotiva
             }
 
         }
-
+        // TODO tambem incluir o label com o ID do cliente
         private void ExibeCliente(Cliente cliente)
         {
 
-         
+        
 
                 lblNome.Text = $"Nome: {cliente.Nome}";
                 lblCpf.Text = $"CPF: {cliente.Cpf}";
@@ -64,7 +97,18 @@ namespace GerenciamentoOficinaAutomotiva
                 lblTelefone.Text = $"Telefone: {cliente.Telefone}";
 
 
-       
+            var veiculo = cliente.Veiculos.FirstOrDefault();
+            if (cliente.Veiculos != null)
+            {
+                lblVeiculo.Text = $"Veículo: {veiculo.Marca} {veiculo.Modelo} ({veiculo.Cor}, {veiculo.Placa})";
+            }
+            else
+            {
+                lblVeiculo.Text = "Veículo: Não cadastrado";
+            }
+
+
+
         }
 
 
@@ -75,5 +119,9 @@ namespace GerenciamentoOficinaAutomotiva
 
         }
 
+        private void lblTelefone_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

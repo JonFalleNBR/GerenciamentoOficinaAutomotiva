@@ -191,10 +191,22 @@
     <Compile Include="Context\OficinaContext.cs" />
     <Compile Include="DTO\ClienteDTO.cs" />
     <Compile Include="DTO\VeiculoDTO.cs" />
-    <Compile Include="FrmPrincipalBusca.cs">
+    <Compile Include="Forms\CadastroCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmPrincipalBusca.Designer.cs">
+    <Compile Include="Forms\CadastroCliente.Designer.cs">
+      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCadastroVeiculos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCadastroVeiculos.Designer.cs">
+      <DependentUpon>FrmCadastroVeiculos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmPrincipalBusca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmPrincipalBusca.Designer.cs">
       <DependentUpon>FrmPrincipalBusca.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\ClienteRepository.cs" />
@@ -206,7 +218,13 @@
     <Compile Include="InfraStructure\IClienteRepository.cs" />
     <Compile Include="InfraStructure\IVeiculoRepository.cs" />
     <Compile Include="Repository\VeiculoRepository.cs" />
-    <EmbeddedResource Include="FrmPrincipalBusca.resx">
+    <EmbeddedResource Include="Forms\CadastroCliente.resx">
+      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCadastroVeiculos.resx">
+      <DependentUpon>FrmCadastroVeiculos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmPrincipalBusca.resx">
       <DependentUpon>FrmPrincipalBusca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
